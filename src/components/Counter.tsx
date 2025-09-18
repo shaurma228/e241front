@@ -2,7 +2,6 @@
 
 import React, {useState} from "react"
 import { Button } from "@/components/ui/button"
-import {reset} from "next/dist/lib/picocolors";
 
 function Counter() {
     const [count, setCount] = useState(0)
