@@ -16,8 +16,8 @@ function Counter() {
 
     return (
         <div className="flex flex-col items-center justify-between h-[100px] w-[100px]">
-            <Button onClick={addCount} className="w-15">+1</Button>
-            <Button onClick={removeCount} className="w-15">reset</Button>
+            <Button onClick={addCount} className="w-15" variant="win95">+1</Button>
+            <Button onClick={removeCount} className="w-15" variant="win95">reset</Button>
             <div>{count}</div>
         </div>
     )
