@@ -20,6 +20,8 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
+        win95:
+          "bg-[#c0c0c0] border border-[#fff] border-b-[#808080] border-r-[#808080] border-t-[#fff] border-l-[#fff] text-black px-3 py-1 shadow-[inset_1px_1px_0_#fff,inset_-1px_-1px_0_#808080] active:shadow-[inset_1px_1px_0_#808080,inset_-1px_-1px_0_#fff] active:border-t-[#808080] active:border-l-[#808080] active:border-b-[#fff] active:border-r-[#fff] font-sans transition-none rounded-none",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
