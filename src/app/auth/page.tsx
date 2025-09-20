@@ -8,7 +8,7 @@ import RegisterForm from "@/components/RegisterForm"
 function Auth() {
     return (
         <div className="bg-[url('/wallpaper/1.jpg')] bg-cover min-h-screen flex items-center justify-center">
-            <div className="">
+            <div className="h-[300px]">
                 <Tabs defaultActiveTab="Login" className="w-[300px]">
                     <Tab title="Login">
                         <LoginForm/>
