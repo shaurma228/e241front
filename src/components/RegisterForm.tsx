@@ -15,6 +15,10 @@ function RegisterForm() {
     const router = useRouter()
 
     const handleSubmit = async (event: React.FormEvent) => {
+        if (password !== confirmPassword) {
+            console.log('Passwords do not match')
+            return
+        }
         event.preventDefault()
         try {
             const response = await axios.post(`${apiUrl}/api/register`, { login, password })
@@ -25,7 +29,6 @@ function RegisterForm() {
             router.push('/')
         } catch (error) {
             console.error('Login failed', error)
-            router.push('/')
         }
     }
 
