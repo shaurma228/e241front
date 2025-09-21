@@ -27,6 +27,7 @@ export async function tokenUpdate(refreshToken: string | null, router: ReturnTyp
             } else {
                 console.error('Error updating token', error)
             }
+            handleInvalidToken(router)
         }
     } else {
         console.log('Refresh token is not available')
