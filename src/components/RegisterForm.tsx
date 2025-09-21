@@ -21,7 +21,7 @@ function RegisterForm() {
         }
         event.preventDefault()
         try {
-            const response = await axios.post(`${apiUrl}/api/register`, { login, password })
+            const response = await axios.post(`${apiUrl}/api/auth/register`, { login, password })
             const { token, refreshToken } = response.data
             localStorage.setItem('token', token)
             localStorage.setItem('refreshToken', refreshToken)

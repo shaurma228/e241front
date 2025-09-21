@@ -14,7 +14,7 @@ function handleInvalidToken(router: ReturnType<typeof useRouter>) {
 export async function tokenUpdate(refreshToken: string | null, router: ReturnType<typeof useRouter>) {
     if (refreshToken) {
         try {
-            const response = await axios.post(`${apiUrl}/api/refresh`, { refreshToken })
+            const response = await axios.post(`${apiUrl}/api/auth/refresh`, { refreshToken })
             const { token } = response.data
             localStorage.setItem('token', token)
             console.log('Token updated')

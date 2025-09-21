@@ -16,10 +16,11 @@ function LoginForm() {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
         try {
-            const response = await axios.post(`${apiUrl}/api/login`, { login, password })
+            const response = await axios.post(`${apiUrl}/api/auth/login`, { login, password })
             const { token, refreshToken } = response.data
             localStorage.setItem('token', token)
             localStorage.setItem('refreshToken', refreshToken)
+            console.log(token)
             console.log('Login successful')
             router.push('/')
         } catch (error) {

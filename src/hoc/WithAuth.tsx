@@ -1,6 +1,7 @@
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { tokenUpdate } from '@/utils/TokenUpdate'
+import { decodeJWT } from '@/utils/DecodeJWT'
 
 export default function withAuth<P extends object>(Component: React.ComponentType<P>) {
     return function AuthenticatedComponent(props: P) {
@@ -18,8 +19,7 @@ export default function withAuth<P extends object>(Component: React.ComponentTyp
             }
 
             try {
-                const payloadBase64 = token.split('.')[1]
-                const decodedPayload = JSON.parse(atob(payloadBase64)) as { exp?: number }
+                const decodedPayload = decodeJWT(token)
 
                 if (!decodedPayload || (decodedPayload.exp && decodedPayload.exp * 1000 < Date.now())) {
                     console.log('Token is expired')
