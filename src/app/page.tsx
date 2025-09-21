@@ -12,7 +12,7 @@ function Home() {
     const fetchTest = async () => {
         try {
             const response = await axios.get(`${apiUrl}/api/home/test`)
-            setTestText(response.data.message)
+            console.log(response.data.message)
         } catch (error) {
             console.error('Error fetching test data', error)
         }

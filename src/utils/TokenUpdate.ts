@@ -6,8 +6,8 @@ import { useRouter } from 'next/navigation'
 const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
 function handleInvalidToken(router: ReturnType<typeof useRouter>) {
-    // localStorage.removeItem('token')
-    // localStorage.removeItem('refreshToken')
+    localStorage.removeItem('token')
+    localStorage.removeItem('refreshToken')
     router.push('/auth')
 }
 
@@ -15,7 +15,7 @@ export async function tokenUpdate(refreshToken: string | null, router: ReturnTyp
     if (refreshToken) {
         try {
             const response = await axios.post(`${apiUrl}/api/auth/refresh`, { refreshToken })
-            const { token } = response.data
+            const token = response.data.accessToken
             localStorage.setItem('token', token)
             console.log('Token updated')
         } catch (error: unknown) {

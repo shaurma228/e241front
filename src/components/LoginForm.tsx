@@ -17,8 +17,8 @@ function LoginForm() {
         event.preventDefault()
         try {
             const response = await axios.post(`${apiUrl}/api/auth/login`, { login, password })
-            const { token, refreshToken } = response.data
-            localStorage.setItem('token', token)
+            const { accessToken, refreshToken } = response.data
+            localStorage.setItem('token', accessToken)
             localStorage.setItem('refreshToken', refreshToken)
             console.log('Login successful')
             router.push('/')
