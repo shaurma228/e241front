@@ -6,8 +6,8 @@ import { useRouter } from 'next/navigation'
 const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
 function handleInvalidToken(router: ReturnType<typeof useRouter>) {
-    localStorage.removeItem('token')
-    localStorage.removeItem('refreshToken')
+    // localStorage.removeItem('token')
+    // localStorage.removeItem('refreshToken')
     router.push('/auth')
 }
 
@@ -19,9 +19,8 @@ export async function tokenUpdate(refreshToken: string | null, router: ReturnTyp
             localStorage.setItem('token', token)
             console.log('Token updated')
         } catch (error: unknown) {
-            if (axios.isAxiosError(error) && error.response?.status === 403) {
-                console.error('Error 403: Access denied. Token might be expired.')
-                handleInvalidToken(router)
+            if (axios.isAxiosError(error) && error.response?.status === 401) {
+                console.error('Error 401: Access denied. Token might be expired.')
             } else if (error instanceof Error) {
                 console.error('Error updating token', error.message)
             } else {

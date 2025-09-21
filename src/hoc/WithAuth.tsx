@@ -8,7 +8,6 @@ export default function withAuth<P extends object>(Component: React.ComponentTyp
         const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
 
         useEffect(() => {
-            const token = localStorage.getItem('token')
             const refreshToken = localStorage.getItem('refreshToken')
 
             tokenUpdate(refreshToken, router)

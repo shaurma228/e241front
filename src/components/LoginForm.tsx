@@ -20,7 +20,6 @@ function LoginForm() {
             const { token, refreshToken } = response.data
             localStorage.setItem('token', token)
             localStorage.setItem('refreshToken', refreshToken)
-            console.log(token)
             console.log('Login successful')
             router.push('/')
         } catch (error) {
