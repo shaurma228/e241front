@@ -1,32 +1,17 @@
 'use client'
 
 import React, { useEffect, useState } from "react"
-import withAuth from "@/hoc/WithAuth"
-import axios from "axios"
+import TaskBarComponent from "@/components/TaskBarComponent"
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
 function Home() {
-    const [testText, setTestText] = useState('')
-
-    const fetchTest = async () => {
-        try {
-            const response = await axios.get(`${apiUrl}/api/home/test`)
-            console.log(response.data.message)
-        } catch (error) {
-            console.error('Error fetching test data', error)
-        }
-    }
-
-    useEffect(() => {
-        fetchTest()
-    }, [])
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen py-2">
-            {testText}
+        <div className="bg-[url('/wallpaper/home.jpg')] bg-cover min-h-screen flex items-center justify-center">
+            <TaskBarComponent/>
         </div>
     )
 }
 
-export default withAuth(Home)
+export default Home
