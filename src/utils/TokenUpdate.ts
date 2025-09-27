@@ -1,0 +1,35 @@
+'use client'
+
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL
+
+function handleInvalidToken(router: ReturnType<typeof useRouter>) {
+    localStorage.removeItem('token')
+    localStorage.removeItem('refreshToken')
+    router.push('/auth')
+}
+
+export async function tokenUpdate(refreshToken: string | null, router: ReturnType<typeof useRouter>) {
+    if (refreshToken) {
+        try {
+            const response = await axios.post(`${apiUrl}/api/auth/refresh`, { refreshToken })
+            const token = response.data.accessToken
+            localStorage.setItem('token', token)
+            console.log('Token updated')
+        } catch (error: unknown) {
+            if (axios.isAxiosError(error) && error.response?.status === 401) {
+                console.error('Error 401: Access denied. Token might be expired.')
+            } else if (error instanceof Error) {
+                console.error('Error updating token', error.message)
+            } else {
+                console.error('Error updating token', error)
+            }
+            handleInvalidToken(router)
+        }
+    } else {
+        console.log('Refresh token is not available')
+        handleInvalidToken(router)
+    }
+}
