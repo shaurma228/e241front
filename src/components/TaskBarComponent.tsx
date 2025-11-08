@@ -7,7 +7,6 @@ import {
 } from "@react95/icons"
 
 function TaskBarComponent() {
-
     return (
         <TaskBar
             list = {
