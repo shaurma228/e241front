@@ -27,7 +27,7 @@ function Desktop(props: WindowSizeProviderProps) {
                 onDoubleClick={() => handleOpenVacancyList()}
             >
                 <Wab321018 variant="32x32_4"/>
-                <p className="text-white select-none">Vacancy list</p>
+                <p className="text-white select-none">Вакансии</p>
             </div>
         </div>
     )

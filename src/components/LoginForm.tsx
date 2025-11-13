@@ -32,7 +32,7 @@ function LoginForm() {
             <div className="w-[300px]">
                 <Fieldset className="w-[300px]">
                     <div className="flex items-center justify-center mt-2 mb-2">
-                        <div className="w-[60px]">Login</div>
+                        <div className="w-[60px]">Логин</div>
                         <Input
                             className="w-[220px]"
                             value={login}
@@ -41,7 +41,7 @@ function LoginForm() {
                         ></Input>
                     </div>
                     <div className="flex items-center justify-center mb-2">
-                        <div className="w-[60px]">Password</div>
+                        <div className="w-[60px]">Пароль</div>
                         <Input
                             className="w-[220px]"
                             type={showPassword ? "text" : "password"}
@@ -51,11 +51,11 @@ function LoginForm() {
                         ></Input>
                     </div>
                     <div className="ml-2 mb-2">
-                        <Checkbox onClick={() => setShowPassword((v) => !v)}>Show password</Checkbox>
+                        <Checkbox onClick={() => setShowPassword((v) => !v)}>Показать пароль</Checkbox>
                     </div>
                 </Fieldset>
                 <div className="w-full flex justify-end">
-                    <Button className="mt-2 w-[100px]" type="submit">Login</Button>
+                    <Button className="mt-2 w-[100px]" type="submit">Войти</Button>
                 </div>
             </div>
         </form>

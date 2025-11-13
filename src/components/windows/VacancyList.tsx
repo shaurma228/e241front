@@ -1,6 +1,9 @@
-import { List, Modal, TitleBar } from "@react95/core"
+import React from "react"
+import { Modal, TitleBar } from "@react95/core"
 import { Wab321018 }  from "@react95/icons"
 import type { WindowProps } from '@/types/props.ts'
+import {testVacancies} from "@/data/testVacancies"
+import Vacancy from "@/components/Vacancy"
 
 function VacancyList(props: WindowProps) {
     const showVacancyList = props.show
@@ -20,9 +23,9 @@ function VacancyList(props: WindowProps) {
                     className="resize"
                     key="vacancy-list-modal"
                     width="600px"
-                    height={"500px"}
+                    height="600px"
                     icon={<Wab321018 variant="32x32_4" />}
-                    title="Vacancy List"
+                    title="Вакансии"
                     dragOptions={{
                         defaultPosition: {
                             x: screenW,
@@ -34,12 +37,13 @@ function VacancyList(props: WindowProps) {
                         <TitleBar.Close key="close" onClick={handleCloseVacancyList} />,
                     ]}
                 >
-                    <List>
-                        <List.Item>A</List.Item>
-                        <List.Item>B</List.Item>
-                        <List.Item>C</List.Item>
-                        <List.Item>D</List.Item>
-                    </List>
+                    <div className="overflow-auto h-full">
+                        <div className="ml-4 mt-4 mr-4">
+                            {testVacancies.map(v => (
+                                <Vacancy key={v.vacancyID} {...v} />
+                            ))}
+                        </div>
+                    </div>
                 </Modal>
             )}
         </div>

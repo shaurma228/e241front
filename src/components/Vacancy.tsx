@@ -11,7 +11,7 @@ function Vacancy(props: VacancyProps) {
     } = props
 
     return (
-        <Fieldset legend={companyName + " — " + officeName} style={{ marginBottom: '1rem' }} className="w-[400px] h-auto">
+        <Fieldset legend={companyName + " — " + officeName} style={{ marginBottom: '1rem' }} className="h-auto">
             <div className="ml-2 mr-2 mb-2">
                 <p><strong>Заработная плата:</strong> {salary}</p>
 

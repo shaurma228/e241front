@@ -34,10 +34,10 @@ function RegisterForm() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="w-[300px]">
-                <Fieldset className="w-[300px]">
+            <div className="w-[320px]">
+                <Fieldset className="w-[320px]">
                     <div className="flex items-center justify-center mt-2 mb-2">
-                        <div className="w-[60px]">Login</div>
+                        <div className="w-[80px]">Логин</div>
                         <Input
                             className="w-[220px]"
                             value={login}
@@ -46,7 +46,7 @@ function RegisterForm() {
                         ></Input>
                     </div>
                     <div className="flex items-center justify-center mb-2">
-                        <div className="w-[60px]">Password</div>
+                        <div className="w-[80px]">Пароль</div>
                         <Input
                             className="w-[220px]"
                             type={showPassword ? "text" : "password"}
@@ -56,7 +56,7 @@ function RegisterForm() {
                         ></Input>
                     </div>
                     <div className="flex items-center justify-center mb-2">
-                        <div className="w-[60px]">Confirm</div>
+                        <div className="w-[80px]">Подтвердить пароль</div>
                         <Input
                             className="w-[220px]"
                             type={showPassword ? "text" : "password"}
@@ -66,11 +66,11 @@ function RegisterForm() {
                         ></Input>
                     </div>
                     <div className="ml-2 mb-2">
-                        <Checkbox onClick={() => setShowPassword((v) => !v)}>Show password</Checkbox>
+                        <Checkbox onClick={() => setShowPassword((v) => !v)}>Показать пароль</Checkbox>
                     </div>
                 </Fieldset>
                 <div className="w-full flex justify-end">
-                    <Button className="mt-2 w-[100px]" type="submit">Register</Button>
+                    <Button className="mt-2 w-[150px]" type="submit">Зарегестрироваться</Button>
                 </div>
             </div>
         </form>

@@ -10,10 +10,10 @@ function Auth() {
         <div className="bg-[url('/wallpaper/auth.jpg')] bg-cover min-h-screen flex items-center justify-center">
             <div className="h-[300px]">
                 <Tabs defaultActiveTab="Login" className="w-[300px]">
-                    <Tab title="Login">
+                    <Tab title="Вход">
                         <LoginForm/>
                     </Tab>
-                    <Tab title="Register">
+                    <Tab title="Регистрация">
                         <RegisterForm/>
                     </Tab>
                 </Tabs>
