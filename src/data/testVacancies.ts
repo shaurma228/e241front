@@ -1,6 +1,6 @@
-import type { VacancyProps } from '@/types/props'
+import type { Vacancy } from '@/types/props'
 
-export const testVacancies: VacancyProps[] = [
+export const testVacancies: Vacancy[] = [
     {
         vacancyID: 1,
         salary: "80 000 ₽",
@@ -8,11 +8,9 @@ export const testVacancies: VacancyProps[] = [
         workStart: "09:00",
         workEnd: "18:00",
 
-        companyID: 101,
         companyName: "Acme Tech",
         companyDescription: "Молодая команда, работающая над b2b продуктами.",
 
-        officeID: 201,
         officeName: "Офис в Москве",
         officeDescription: "Уютный офис рядом со станцией метро.",
         officeAddress: "г. Москва, ул. Примерная, 1",
@@ -30,11 +28,9 @@ export const testVacancies: VacancyProps[] = [
         workStart: "10:00",
         workEnd: "19:00",
 
-        companyID: 102,
         companyName: "Beta Solutions",
         companyDescription: "Крупная компания в сфере SaaS.",
 
-        officeID: 202,
         officeName: "Главный офис",
         officeDescription: "",
         officeAddress: "г. Санкт-Петербург, Невский пр., 10",

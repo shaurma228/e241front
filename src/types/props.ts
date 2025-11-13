@@ -1,15 +1,13 @@
-export interface VacancyProps {
+export interface Vacancy {
     vacancyID: number
     salary: string
     description: string
     workStart: string
     workEnd: string
 
-    companyID: number
     companyName: string
     companyDescription: string
 
-    officeID: number
     officeName: string
     officeDescription: string
     officeAddress: string
@@ -21,7 +19,16 @@ export interface VacancyProps {
     qualificationDescription: string
 }
 
-export interface WindowProps {
+export interface Experience {
+    ID: number
+    companyName: string
+    startDate: string
+    endDate: string
+    qualificationName: string
+    qualificationDescription: string
+}
+
+export interface Window {
     show: boolean,
     toggle: (windowName: string, isVisible: boolean) => void
 }

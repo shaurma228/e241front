@@ -1,8 +1,8 @@
 import React from "react"
 import { Button, Fieldset  } from "@react95/core"
-import type { VacancyProps } from '@/types/props'
+import type { Vacancy } from '@/types/props'
 
-function Vacancy(props: VacancyProps) {
+function Vacancy(props: Vacancy) {
     const {
         vacancyID, salary, description, workStart, workEnd,
         companyName, companyDescription,

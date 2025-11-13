@@ -1,31 +1,30 @@
 import React from "react"
-import { Modal, TitleBar } from "@react95/core"
+import { Modal, TitleBar} from "@react95/core"
 import { Wab321018 }  from "@react95/icons" //надо обновить иконку
 import type { Window } from '@/types/props.ts'
-import {testVacancies} from "@/data/testVacancies"
-import Vacancy from "@/components/Vacancy"
+import ResumeForm from "@/components/ResumeForm"
 
-function VacancyList(props: Window) {
-    const showVacancyList = props.show
-    const toggleShowVacancyList = props.toggle
+function MyResume(props: Window) {
+    const showMyResume = props.show
+    const toggleShowMyResume = props.toggle
     const screenW = 100
     const screenH = -30
 
     const handleCloseVacancyList = () => {
-        toggleShowVacancyList( "VacancyList", false)
+        toggleShowMyResume( "MyResume", false)
     }
 
     return (
         <div>
-            {showVacancyList && (
+            {showMyResume && (
                 // @ts-expect-error: react95 Modal typing incompatible with JSX factory
                 <Modal
                     className="resize"
-                    key="vacancy-list-modal"
+                    key="my-resume-modal"
                     width="600px"
                     height="600px"
                     icon={<Wab321018 variant="32x32_4" />}
-                    title="Вакансии"
+                    title="Моё резюме"
                     dragOptions={{
                         defaultPosition: {
                             x: screenW,
@@ -38,11 +37,7 @@ function VacancyList(props: Window) {
                     ]}
                 >
                     <div className="overflow-auto h-full">
-                        <div className="ml-4 mt-4 mr-4">
-                            {testVacancies.map(v => (
-                                <Vacancy key={v.vacancyID} {...v} />
-                            ))}
-                        </div>
+                        <ResumeForm/>
                     </div>
                 </Modal>
             )}
@@ -50,4 +45,4 @@ function VacancyList(props: Window) {
     )
 }
 
-export default VacancyList
+export default MyResume

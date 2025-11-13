@@ -7,10 +7,12 @@ import {
 
 interface WindowSizeProviderProps {
     openVacancyList: () => void
+    openMyResume: () => void
 }
 
 function Desktop(props: WindowSizeProviderProps) {
     const handleOpenVacancyList = props.openVacancyList
+    const handleOpenMyResume = props.openMyResume
 
     const [activeIcon, setActiveIcon] = useState<number | null>(null);
 
@@ -28,6 +30,14 @@ function Desktop(props: WindowSizeProviderProps) {
             >
                 <Wab321018 variant="32x32_4"/>
                 <p className="text-white select-none">Вакансии</p>
+            </div>
+            <div
+                className={`w-[80px] h-[80px] flex flex-col items-center justify-center ${activeIcon === 1 ? "border-[2px] border-white border-dotted bg-[rgba(160,140,55,0.6)]" : ""}`}
+                onClick={() => handleToggleIcon(1)}
+                onDoubleClick={() => handleOpenMyResume()}
+            >
+                <Wab321018 variant="32x32_4"/>
+                <p className="text-white select-none">Моё Резюме</p>
             </div>
         </div>
     )
