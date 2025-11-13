@@ -9,7 +9,7 @@ interface WindowSizeProviderProps {
     openVacancyList: () => void
 }
 
-function Desctop(props: WindowSizeProviderProps) {
+function Desktop(props: WindowSizeProviderProps) {
     const handleOpenVacancyList = props.openVacancyList
 
     const [activeIcon, setActiveIcon] = useState<number | null>(null);
@@ -22,7 +22,7 @@ function Desctop(props: WindowSizeProviderProps) {
         <div className="ml-4">
             <div className="h-4"/>
             <div
-                className={`w-[80px] flex flex-col items-center ${activeIcon === 1 ? "border-[2px] border-white border-dotted bg-[rgba(160,140,55,0.6)]" : ""}`}
+                className={`w-[80px] h-[80px] flex flex-col items-center justify-center ${activeIcon === 1 ? "border-[2px] border-white border-dotted bg-[rgba(160,140,55,0.6)]" : ""}`}
                 onClick={() => handleToggleIcon(1)}
                 onDoubleClick={() => handleOpenVacancyList()}
             >
@@ -33,4 +33,4 @@ function Desctop(props: WindowSizeProviderProps) {
     )
 }
 
-export default Desctop
+export default Desktop

@@ -3,10 +3,8 @@
 import React, { useState } from "react"
 
 import TaskBarComponent from "@/components/TaskBarComponent"
-import Desctop from "@/components/Desctop"
-import VacancyList from "@/components/VacancyList"
-
-const apiUrl = process.env.NEXT_PUBLIC_API_URL
+import Desktop from "@/components/Desktop"
+import VacancyList from "@/components/windows/VacancyList"
 
 function Home() {
     const [showWindows, setShowWindows] = useState({
@@ -24,7 +22,7 @@ function Home() {
 
     return (
         <div className="bg-[url('/wallpaper/home.jpg')] bg-cover min-h-screen">
-            <Desctop
+            <Desktop
                 openVacancyList = {() => handleOpenWindow('vacancyList')}
             />
             <TaskBarComponent/>

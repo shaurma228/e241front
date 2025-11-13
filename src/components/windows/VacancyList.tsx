@@ -1,24 +1,12 @@
-'use client'
-
-import React, { useState, useEffect } from 'react'
 import { List, Modal, TitleBar } from "@react95/core"
 import { Wab321018 }  from "@react95/icons"
+import type { WindowProps } from '@/types/props.ts'
 
-interface VacancyListProps {
-    show: boolean,
-    toggle: (windowName: string, isVisible: boolean) => void
-}
-
-function VacancyList(props: VacancyListProps) {
+function VacancyList(props: WindowProps) {
     const showVacancyList = props.show
     const toggleShowVacancyList = props.toggle
-    const [screenW, setScreenW] = useState(0)
-    const [screenH, setScreenH] = useState(0)
-
-    useEffect(() => {
-        setScreenW(window.innerWidth / 2 - 300)
-        setScreenH(-30)
-    }, [])
+    const screenW = 100
+    const screenH = -30
 
     const handleCloseVacancyList = () => {
         toggleShowVacancyList( "VacancyList", false)
@@ -45,7 +33,7 @@ function VacancyList(props: VacancyListProps) {
                         <Modal.Minimize key="minimize-modal" />,
                         <TitleBar.Close key="close" onClick={handleCloseVacancyList} />,
                     ]}
-                > 
+                >
                     <List>
                         <List.Item>A</List.Item>
                         <List.Item>B</List.Item>
