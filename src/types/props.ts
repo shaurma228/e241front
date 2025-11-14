@@ -21,6 +21,7 @@ export interface Vacancy {
 
 export interface Experience {
     ID: number
+    companyID: number
     companyName: string
     startDate: string
     endDate: string
@@ -31,4 +32,9 @@ export interface Experience {
 export interface Window {
     show: boolean,
     toggle: (windowName: string, isVisible: boolean) => void
+}
+
+export interface Companies {
+    show: boolean,
+    selected: (ID: number) => void,
 }

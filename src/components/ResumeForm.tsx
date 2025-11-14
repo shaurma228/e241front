@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react"
 import { Experience } from "@/types/props"
-import ExperienceForm from "@/components/ExperienceForm"
+import EitOrDeleteExperience from "@/components/EditOrDeleteExperience"
+import CreateExperience from "@/components/CreateExperience"
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
@@ -30,7 +31,7 @@ function ResumeForm() {
 
     return (
         <div>
-            {/*name, description, photoURL with editing and list of ExperienceForm*/}
+            {/*name, description, photoURL with editing and list of EitOrDeleteExperience and creste button*/}
         </div>
     )
 }
