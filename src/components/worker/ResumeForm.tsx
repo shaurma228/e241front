@@ -71,6 +71,9 @@ function ResumeForm() {
                     <ExperinnceCard key={exp.ID} {...exp} />
                 ))}
             </div>
+            <div>
+                <Button>Добавить опыт работы</Button>
+            </div>
         </div>
     )
 }
