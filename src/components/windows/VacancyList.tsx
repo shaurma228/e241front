@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Modal, TitleBar } from "@react95/core"
 import { Wab321018 }  from "@react95/icons" //надо обновить иконку
 import type { Window } from '@/types/props.ts'
@@ -10,10 +10,15 @@ function VacancyList(props: Window) {
     const toggleShowVacancyList = props.toggle
     const screenW = 100
     const screenH = -30
+    const [filterStatus, setFilterStatus] = useState<'none' | 'pending' | 'accepted' | 'rejected' | ''>('');
 
     const handleCloseVacancyList = () => {
         toggleShowVacancyList( "VacancyList", false)
     }
+
+    const filteredVacancies = filterStatus
+        ? testVacancies.filter(v => v.responseStatus === filterStatus)
+        : testVacancies;
 
     return (
         <div>
@@ -39,7 +44,21 @@ function VacancyList(props: Window) {
                 >
                     <div className="overflow-auto h-full">
                         <div className="ml-4 mt-4 mr-4">
-                            {testVacancies.map(v => (
+                            <div className="mb-4">
+                                <label htmlFor="filterStatus" className="mr-2">Фильтр по статусу:</label>
+                                <select
+                                    id="filterStatus"
+                                    value={filterStatus}
+                                    onChange={(e) => setFilterStatus(e.target.value as typeof filterStatus)}
+                                >
+                                    <option value="">Все</option>
+                                    <option value="none">Нет отклика</option>
+                                    <option value="pending">Ожидание</option>
+                                    <option value="accepted">Принят</option>
+                                    <option value="rejected">Отклонен</option>
+                                </select>
+                            </div>
+                            {filteredVacancies.map(v => (
                                 <Vacancy key={v.vacancyID} {...v} />
                             ))}
                         </div>

@@ -7,8 +7,10 @@ function Vacancy(props: Vacancy) {
         vacancyID, salary, description, workStart, workEnd,
         companyName, companyDescription,
         officeName, officeDescription, officeAddress, officeContact,
-        requirements, requiredYears, qualificationName, qualificationDescription
+        requirements, requiredYears, qualificationName, qualificationDescription, responseStatus
     } = props
+
+    const [responseStatusState, setResponseStatusState] = React.useState<string>(responseStatus || 'none')
 
     return (
         <Fieldset legend={companyName + " — " + officeName} style={{ marginBottom: '1rem' }} className="h-auto">
@@ -42,7 +44,12 @@ function Vacancy(props: Vacancy) {
                 </div>
 
                 <div className="flex justify-end mt-2">
-                    <Button>Откликнуться</Button>
+                    <Button>
+                        {responseStatusState === 'none' && 'Откликнуться'}
+                        {responseStatusState === 'pending' && 'Отклик отправлен'}
+                        {responseStatusState === 'accepted' && 'Отклик принят'}
+                        {responseStatusState === 'rejected' && 'Отклик отклонен'}
+                    </Button>
                 </div>
             </div>
         </Fieldset>

@@ -39,7 +39,8 @@ export const testVacancies: Vacancy[] = [
         requirements: "Опыт проектирования архитектуры фронтенд-приложений, mentoring.",
         requiredYears: "5+ лет",
         qualificationName: "Senior",
-        qualificationDescription: "Опыт в масштабируемых проектах и ведении команды."
+        qualificationDescription: "Опыт в масштабируемых проектах и ведении команды.",
+        responseStatus: "accepted"
     }
 ]
 

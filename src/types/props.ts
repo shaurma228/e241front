@@ -17,6 +17,8 @@ export interface Vacancy {
     requiredYears: string
     qualificationName: string
     qualificationDescription: string
+
+    responseStatus?: 'none' | 'pending' | 'accepted' | 'rejected'
 }
 
 export interface Window {
