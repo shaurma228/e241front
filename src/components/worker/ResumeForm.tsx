@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react"
 import { Experience } from "@/types/props"
 import ExperinnceCard from "@/components/worker/ExperinnceCard"
 import { Button, Input, TextArea } from "@react95/core"
+import ExperienceEditor from './ExperienceEditor'
 import { experiences as testExperiences, name as testName, description as testDescription } from "@/data/testResume"
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL
@@ -14,6 +15,17 @@ function ResumeForm() {
     const [description, setDescription] = useState<string>("")
     const [photo, setPhoto] = useState<string>("")
 
+    const [toAddExperience, setToAddExperience] = useState<Experience>({
+        ID: 0,
+        companyID: undefined,
+        companyName: "",
+        startDate: null,
+        endDate: null,
+        qualificationName: "",
+        qualificationDescription: "",
+    })
+
+    const [isAddingExperience, setIsAddingExperience] = useState<boolean>(false)
 
     // const fetchResumeData = async () => {
     //     try {
@@ -32,6 +44,13 @@ function ResumeForm() {
     //     }
     // }
     //
+
+    const handleAddExperience = (newExperience: Experience) => {
+        setToAddExperience(newExperience)
+        setExperiences([...experiences, newExperience])
+        setIsAddingExperience(false)
+    }
+
     useEffect(() => {
         setExperiences(testExperiences.map(exp => ({
             ...exp,
@@ -72,7 +91,18 @@ function ResumeForm() {
                 ))}
             </div>
             <div>
-                <Button>Добавить опыт работы</Button>
+                <Button
+                    className="mb-4"
+                    onClick={() => setIsAddingExperience(!isAddingExperience)}
+                >
+                    {isAddingExperience ? 'Отмена' : 'Добавить опыт работы'}
+                </Button>
+                {isAddingExperience &&
+                    <ExperienceEditor
+                        experience={toAddExperience}
+                        onUpdate={handleAddExperience}
+                        onCancel={() => setIsAddingExperience(false)}/>
+                }
             </div>
         </div>
     )
