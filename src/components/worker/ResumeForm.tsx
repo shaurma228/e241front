@@ -90,18 +90,20 @@ function ResumeForm() {
                     <ExperinnceCard key={exp.ID} {...exp} />
                 ))}
             </div>
-            <div>
+            <div className="flex flex-col justify-center mt-4">
                 <Button
-                    className="mb-4"
+                    className="mb-4 w-fit self-center"
                     onClick={() => setIsAddingExperience(!isAddingExperience)}
                 >
                     {isAddingExperience ? 'Отмена' : 'Добавить опыт работы'}
                 </Button>
                 {isAddingExperience &&
-                    <ExperienceEditor
-                        experience={toAddExperience}
-                        onUpdate={handleAddExperience}
-                        onCancel={() => setIsAddingExperience(false)}/>
+                    <div className="flex justify-center">
+                        <ExperienceEditor
+                            experience={toAddExperience}
+                            onUpdate={handleAddExperience}
+                            onCancel={() => setIsAddingExperience(false)}/>
+                    </div>
                 }
             </div>
         </div>

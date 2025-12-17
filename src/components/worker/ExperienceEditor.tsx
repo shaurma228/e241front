@@ -32,7 +32,7 @@ const ExperienceEditor: React.FC<ExperienceEditorProps> = ({ experience, onUpdat
     }
 
     return (
-        <Fieldset legend="Редактировать" style={{ marginBottom: '1rem' }} className="h-auto flex flex-col">
+        <Fieldset legend="Редактировать" style={{ marginBottom: '1rem' }} className="h-auto flex flex-col w-fit">
             <div className="ml-2">
                 <div>
                     <strong>Компания:</strong>
@@ -56,7 +56,7 @@ const ExperienceEditor: React.FC<ExperienceEditorProps> = ({ experience, onUpdat
                 <div>
                     <strong>Квалификация:</strong>
                     <Input
-                        className="w-[50%] mb-2 ml-1"
+                        className="w-[200px] mb-2 ml-1 mr-2"
                         value={qualificationName}
                         onChange={(e) => setQualificationName(e.target.value)}
                     />
@@ -64,7 +64,7 @@ const ExperienceEditor: React.FC<ExperienceEditorProps> = ({ experience, onUpdat
                 <div className="flex flex-col">
                     <strong>Описание квалификации: </strong>
                     <TextArea
-                        className="w-[70%] mb-2 ml-1 mt-2"
+                        className="w-[96%] mb-2 ml-1 mt-2"
                         value={qualificationDescription}
                         onChange={(e) => setQualificationDescription(e.target.value)}
                     />
@@ -76,7 +76,7 @@ const ExperienceEditor: React.FC<ExperienceEditorProps> = ({ experience, onUpdat
                     <strong>Дата окончания: </strong><DatePicker selected={endDate} onChange={(e) => setEndDate(e)} />
                 </div>
             </div>
-            <div className="mb-2 flex justify-center">
+            <div className="mb-2 mt-2 flex justify-center">
                 <Button onClick={handleSave}>Сохранить</Button>
                 <Button onClick={onCancel} className="ml-2">Отменить</Button>
             </div>

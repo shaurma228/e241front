@@ -35,11 +35,13 @@ function ExperinnceCard(props: Experience) {
                 </div>
             </Fieldset>
             {isEditing && (
-                <ExperienceEditor
-                    experience={experience}
-                    onUpdate={handleUpdate}
-                    onCancel={() => setIsEditing(false)}
-                />
+                <div className="flex justify-center">
+                    <ExperienceEditor
+                        experience={experience}
+                        onUpdate={handleUpdate}
+                        onCancel={() => setIsEditing(false)}
+                    />
+                </div>
             )}
         </div>
     )
