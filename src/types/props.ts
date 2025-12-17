@@ -43,3 +43,13 @@ export interface Companies {
     show: boolean,
     selected: (comp: Company) => void,
 }
+
+export interface Experience {
+    ID?: number | undefined,
+    companyID?: number | undefined,
+    companyName?: string | undefined,
+    startDate?: string | undefined,
+    endDate?: string | undefined,
+    qualificationName?: string | undefined,
+    qualificationDescription?: string | undefined,
+}

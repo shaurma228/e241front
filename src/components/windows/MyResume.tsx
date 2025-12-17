@@ -2,7 +2,7 @@ import React from "react"
 import { Modal, TitleBar} from "@react95/core"
 import { Wab321018 }  from "@react95/icons" //надо обновить иконку
 import type { Window } from '@/types/props.ts'
-import ResumeForm from "@/components/ResumeForm"
+import ResumeForm from "@/components/worker/ResumeForm"
 
 function MyResume(props: Window) {
     const showMyResume = props.show
@@ -37,7 +37,9 @@ function MyResume(props: Window) {
                     ]}
                 >
                     <div className="overflow-auto h-full">
-                        <ResumeForm/>
+                        <div className="ml-4 mt-4 mr-4">
+                            <ResumeForm/>
+                        </div>
                     </div>
                 </Modal>
             )}
