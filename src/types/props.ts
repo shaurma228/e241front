@@ -19,16 +19,6 @@ export interface Vacancy {
     qualificationDescription: string
 }
 
-export interface Experience {
-    ID?: number
-    companyID?: number
-    companyName?: string
-    startDate?: string
-    endDate?: string
-    qualificationName?: string
-    qualificationDescription?: string
-}
-
 export interface Window {
     show: boolean,
     toggle: (windowName: string, isVisible: boolean) => void
@@ -45,11 +35,11 @@ export interface Companies {
 }
 
 export interface Experience {
-    ID?: number | undefined,
+    ID: number | undefined,
     companyID?: number | undefined,
     companyName?: string | undefined,
-    startDate?: string | undefined,
-    endDate?: string | undefined,
+    startDate: Date | null,
+    endDate: Date | null,
     qualificationName?: string | undefined,
     qualificationDescription?: string | undefined,
 }

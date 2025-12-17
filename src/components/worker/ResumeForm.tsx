@@ -33,7 +33,11 @@ function ResumeForm() {
     // }
     //
     useEffect(() => {
-        setExperiences(testExperiences)
+        setExperiences(testExperiences.map(exp => ({
+            ...exp,
+            startDate: exp.startDate ? new Date(exp.startDate) : null,
+            endDate: exp.endDate ? new Date(exp.endDate) : null,
+        })))
         setName(testName)
         setDescription(testDescription)
     }, [])
@@ -54,7 +58,7 @@ function ResumeForm() {
                     <TextArea
                         className="w-full ml-2"
                         value={description}
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={(e) => setDescription(e.target.value)}
                     />
                 </div>
             </div>
