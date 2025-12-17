@@ -5,7 +5,6 @@ import { Experience } from "@/types/props"
 import ExperinnceCard from "@/components/worker/ExperinnceCard"
 import { Button, Input, TextArea } from "@react95/core"
 import { experiences as testExperiences, name as testName, description as testDescription } from "@/data/testResume"
-import {decodeMagicIdentifier} from "next/dist/shared/lib/magic-identifier";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
@@ -14,6 +13,7 @@ function ResumeForm() {
     const [name, setName] = useState<string>("")
     const [description, setDescription] = useState<string>("")
     const [photo, setPhoto] = useState<string>("")
+
 
     // const fetchResumeData = async () => {
     //     try {
@@ -64,7 +64,7 @@ function ResumeForm() {
             <div>
                 <div>Список опыта работы:</div>
                 {experiences.map(exp => (
-                    <ExperinnceCard key={exp.ID ?? exp.companyID} {...exp} />
+                    <ExperinnceCard key={exp.ID} {...exp} />
                 ))}
             </div>
         </div>
