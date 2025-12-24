@@ -1,24 +1,34 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Modal, TitleBar } from "@react95/core"
 import { Wab321018 }  from "@react95/icons" //надо обновить иконку
-import type { Window } from '@/types/props.ts'
-import {testVacancies} from "@/data/testVacancies"
-import Vacancy from "@/components/Vacancy"
+import type { Window, Vacancy } from '@/types/props.ts'
+import VacancyCard from "@/components/VacancyCard"
+import axios from "axios"
 
 function VacancyList(props: Window) {
     const showVacancyList = props.show
     const toggleShowVacancyList = props.toggle
     const screenW = 100
     const screenH = -30
-    const [filterStatus, setFilterStatus] = useState<'none' | 'pending' | 'accepted' | 'rejected' | ''>('');
+    const [vacancies, setVacancies] = useState<Vacancy[]>([])
 
     const handleCloseVacancyList = () => {
         toggleShowVacancyList( "VacancyList", false)
     }
 
-    const filteredVacancies = filterStatus
-        ? testVacancies.filter(v => v.responseStatus === filterStatus)
-        : testVacancies
+    const fetchVacancies = async () => {
+         try {
+             const response = await axios.get('/api/vacancy')
+             setVacancies(response.data)
+         }
+         catch (error) {
+             console.error(error);
+         }
+    }
+
+    useEffect(() => {
+        fetchVacancies()
+    }, [])
 
     return (
         <div>
@@ -44,19 +54,8 @@ function VacancyList(props: Window) {
                 >
                     <div className="overflow-auto h-full">
                         <div className="ml-4 mt-4 mr-4">
-                            <div className="mb-4">
-                                <label htmlFor="filterStatus" className="mr-2">Фильтр по статусу:</label>
-                                <select
-                                    id="filterStatus"
-                                    value={filterStatus}
-                                    onChange={(e) => setFilterStatus(e.target.value as typeof filterStatus)}
-                                >
-                                    <option value="">Все</option>
-                                    <option value="pending">Ожидание</option>
-                                </select>
-                            </div>
-                            {filteredVacancies.map(v => (
-                                <Vacancy key={v.vacancyID} {...v} />
+                            {vacancies.map(v => (
+                                <VacancyCard key={v.vacancyID} {...v} />
                             ))}
                         </div>
                     </div>

@@ -17,8 +17,6 @@ export interface Vacancy {
     requiredYears: string
     qualificationName: string
     qualificationDescription: string
-
-    responseStatus?: 'none' | 'pending'
 }
 
 export interface Window {
@@ -29,11 +27,6 @@ export interface Window {
 export interface Company {
     ID: number | undefined,
     name: string | undefined,
-}
-
-export interface Companies {
-    show: boolean,
-    selected: (comp: Company) => void,
 }
 
 export interface Experience {

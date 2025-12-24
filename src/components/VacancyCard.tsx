@@ -1,16 +1,26 @@
 import React from "react"
 import { Button, Fieldset  } from "@react95/core"
 import type { Vacancy } from '@/types/props'
+import axios from "axios"
 
-function Vacancy(props: Vacancy) {
+const apiUrl = process.env.NEXT_PUBLIC_API_URL
+
+function VacancyCard(props: Vacancy) {
     const {
         vacancyID, salary, description, workStart, workEnd,
         companyName, companyDescription,
         officeName, officeDescription, officeAddress, officeContact,
-        requirements, requiredYears, qualificationName, qualificationDescription, responseStatus
+        requirements, requiredYears, qualificationName, qualificationDescription
     } = props
 
-    const [responseStatusState, setResponseStatusState] = React.useState<string>(responseStatus || 'none')
+    const apply= async () => {
+        try {
+            await axios.post(`${apiUrl}/api/vacancy/${vacancyID}/apply`, {})
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <Fieldset legend={companyName + " — " + officeName} style={{ marginBottom: '1rem' }} className="h-auto">
@@ -44,9 +54,10 @@ function Vacancy(props: Vacancy) {
                 </div>
 
                 <div className="flex justify-end mt-2">
-                    <Button>
-                        {responseStatusState === 'none' && 'Откликнуться'}
-                        {responseStatusState === 'pending' && 'Отклик отправлен'}
+                    <Button
+                        onClick={apply}
+                    >
+                        Откликнуться
                     </Button>
                 </div>
             </div>
@@ -54,4 +65,4 @@ function Vacancy(props: Vacancy) {
     )
 }
 
-export default Vacancy
+export default VacancyCard
