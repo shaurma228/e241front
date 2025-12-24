@@ -47,8 +47,6 @@ function Vacancy(props: Vacancy) {
                     <Button>
                         {responseStatusState === 'none' && 'Откликнуться'}
                         {responseStatusState === 'pending' && 'Отклик отправлен'}
-                        {responseStatusState === 'accepted' && 'Отклик принят'}
-                        {responseStatusState === 'rejected' && 'Отклик отклонен'}
                     </Button>
                 </div>
             </div>

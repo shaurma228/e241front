@@ -3,14 +3,24 @@ import type { Experience } from '@/types/props'
 import { Button, Fieldset } from "@react95/core"
 import ExperienceEditor from './ExperienceEditor'
 
-function ExperinnceCard(props: Experience) {
+interface ExperinnceCardProps extends Experience {
+    onDelete?: (ID?: number) => void
+    onUpdate?: (updExp: Experience) => void
+}
+
+function ExperinnceCard(props: ExperinnceCardProps) {
     const [experience, setExperience] = useState(props)
     const [isEditing, setIsEditing] = useState<boolean>(false)
 
     const handleUpdate = (updatedExperience: Experience) => {
         setExperience(updatedExperience)
-        // TODO: Вызывать апишку для обновления и проверять валидность
         setIsEditing(false)
+        if (props.onUpdate) props.onUpdate(updatedExperience)
+    }
+
+    const handleDelete = (ID: number) => {
+        setIsEditing(false)
+        if (props.onDelete) props.onDelete(ID)
     }
 
     return (
@@ -31,7 +41,9 @@ function ExperinnceCard(props: Experience) {
                     >
                         {isEditing ? 'Отменить' : 'Редактировать'}
                     </Button>
-                    <Button>Удалить</Button> {/*TODO: Вызывать апишку для удаления*/}
+                    <Button
+                        onClick={() => handleDelete}
+                    >Удалить</Button>
                 </div>
             </Fieldset>
             {isEditing && (

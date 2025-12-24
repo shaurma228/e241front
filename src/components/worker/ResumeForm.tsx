@@ -5,7 +5,7 @@ import { Experience } from "@/types/props"
 import ExperinnceCard from "@/components/worker/ExperinnceCard"
 import { Button, Input, TextArea } from "@react95/core"
 import ExperienceEditor from './ExperienceEditor'
-import { experiences as testExperiences, name as testName, description as testDescription } from "@/data/testResume"
+import axios from "axios"
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
@@ -16,7 +16,6 @@ function ResumeForm() {
     const [photo, setPhoto] = useState<string>("")
 
     const [toAddExperience, setToAddExperience] = useState<Experience>({
-        ID: 0,
         companyID: undefined,
         companyName: "",
         startDate: null,
@@ -27,38 +26,75 @@ function ResumeForm() {
 
     const [isAddingExperience, setIsAddingExperience] = useState<boolean>(false)
 
-    // const fetchResumeData = async () => {
-    //     try {
-    //         const response = await fetch(`${apiUrl}/api/resume`, {
-    //             // TODO: Передавать токен
-    //         })
-    //         const data = await response.json()
-    //         setExperiences(data.experiences)
-    //         setName(data.name)
-    //         setDescription(data.description)
-    //         setPhotoURL(data.photoURL)
-    //     }
-    //     catch (error) {
-    //         console.error(error)
-    //         //TODO: Выводить toast
-    //     }
-    // }
-    //
+    const fetchResumeData = async () => {
+        try {
+            const response = await axios.post(`${apiUrl}/api/worker/account`, {})
+            const data = response.data
+            setName(data.Name)
+            setDescription(data.Description)
+            setPhoto(data.PhotoPath)
+        }
+        catch (error) {
+            console.error(error)
+            //TODO: Выводить toast
+        }
+    }
 
-    const handleAddExperience = (newExperience: Experience) => {
+    const fetchHistory = async () => {
+        try {
+            const response = await axios.post(`${apiUrl}/api/history`, {})
+            const data = response.data
+            setExperiences(data)
+        }
+        catch (error) {
+            console.error(error)
+            //TODO: чёто выводить
+        }
+    }
+
+    const handleAddExperience = async (newExperience: Experience) => {
         setToAddExperience(newExperience)
         setExperiences([...experiences, newExperience])
         setIsAddingExperience(false)
+        try {
+            await axios.post(`${apiUrl}/api/add-history`, experiences)
+            fetchHistory()
+        }
+        catch (error) {
+            console.error(error)
+        }
+    }
+
+    const handleRemoveExperience = (id?: number) => {
+        if (!id) return
+        const updatedExperiences = experiences.filter(exp => exp.ID !== id)
+        setExperiences(updatedExperiences)
+        try {
+            axios.post(`${apiUrl}/api/update-history`, { experiences })
+            fetchHistory()
+        }
+        catch (error) {
+            console.error(error)
+        }
+    }
+
+    const handleUpdateExperience = (updatedExperience: Experience) => {
+        const updatedExperiences = experiences.map(exp =>
+            exp.ID === updatedExperience.ID ? updatedExperience : exp
+        )
+        setExperiences(updatedExperiences)
+        try {
+            axios.post(`${apiUrl}/api/update-history`, { experiences })
+            fetchHistory()
+        }
+        catch (error) {
+            console.error(error)
+        }
     }
 
     useEffect(() => {
-        setExperiences(testExperiences.map(exp => ({
-            ...exp,
-            startDate: exp.startDate ? new Date(exp.startDate) : null,
-            endDate: exp.endDate ? new Date(exp.endDate) : null,
-        })))
-        setName(testName)
-        setDescription(testDescription)
+        fetchResumeData()
+        fetchHistory()
     }, [])
 
     return (
@@ -87,7 +123,7 @@ function ResumeForm() {
             <div>
                 <div>Список опыта работы:</div>
                 {experiences.map(exp => (
-                    <ExperinnceCard key={exp.ID} {...exp} />
+                    <ExperinnceCard key={exp.ID} {...exp} onDelete={handleRemoveExperience} onUpdate={handleUpdateExperience} />
                 ))}
             </div>
             <div className="flex flex-col justify-center mt-4">
@@ -102,7 +138,8 @@ function ResumeForm() {
                         <ExperienceEditor
                             experience={toAddExperience}
                             onUpdate={handleAddExperience}
-                            onCancel={() => setIsAddingExperience(false)}/>
+                            onCancel={() => setIsAddingExperience(false)}
+                        />
                     </div>
                 }
             </div>

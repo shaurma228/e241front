@@ -18,7 +18,7 @@ function VacancyList(props: Window) {
 
     const filteredVacancies = filterStatus
         ? testVacancies.filter(v => v.responseStatus === filterStatus)
-        : testVacancies;
+        : testVacancies
 
     return (
         <div>
@@ -52,10 +52,7 @@ function VacancyList(props: Window) {
                                     onChange={(e) => setFilterStatus(e.target.value as typeof filterStatus)}
                                 >
                                     <option value="">Все</option>
-                                    <option value="none">Нет отклика</option>
                                     <option value="pending">Ожидание</option>
-                                    <option value="accepted">Принят</option>
-                                    <option value="rejected">Отклонен</option>
                                 </select>
                             </div>
                             {filteredVacancies.map(v => (

@@ -18,7 +18,7 @@ export interface Vacancy {
     qualificationName: string
     qualificationDescription: string
 
-    responseStatus?: 'none' | 'pending' | 'accepted' | 'rejected'
+    responseStatus?: 'none' | 'pending'
 }
 
 export interface Window {
@@ -28,7 +28,7 @@ export interface Window {
 
 export interface Company {
     ID: number | undefined,
-    Name: string | undefined,
+    name: string | undefined,
 }
 
 export interface Companies {
@@ -37,7 +37,7 @@ export interface Companies {
 }
 
 export interface Experience {
-    ID: number | undefined,
+    ID?: number | undefined,
     companyID?: number | undefined,
     companyName?: string | undefined,
     startDate: Date | null,

@@ -40,7 +40,7 @@ export const testVacancies: Vacancy[] = [
         requiredYears: "5+ лет",
         qualificationName: "Senior",
         qualificationDescription: "Опыт в масштабируемых проектах и ведении команды.",
-        responseStatus: "accepted"
+        responseStatus: "pending"
     }
 ]
 

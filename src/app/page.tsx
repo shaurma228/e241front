@@ -5,6 +5,7 @@ import TaskBarComponent from "@/components/TaskBarComponent"
 import Desktop from "@/components/Desktop"
 import VacancyList from "@/components/windows/VacancyList"
 import MyResume from "@/components/windows/MyResume"
+import withAuth from "@/hoc/WithAuth"
 
 function Home() {
     const [showWindows, setShowWindows] = useState({
@@ -40,4 +41,4 @@ function Home() {
     )
 }
 
-export default Home
+export default withAuth(Home)

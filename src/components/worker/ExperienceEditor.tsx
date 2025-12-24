@@ -1,15 +1,17 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Button, Fieldset, Input, TextArea } from "@react95/core"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
-import { testCompanies } from "@/data/testCompanies"
-import type { Experience } from '@/types/props'
+import type { Experience, Company } from '@/types/props'
+import axios from "axios"
 
 interface ExperienceEditorProps {
     experience: Experience
     onUpdate: (updatedExperience: Experience) => void
     onCancel: () => void
 }
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
 const ExperienceEditor: React.FC<ExperienceEditorProps> = ({ experience, onUpdate, onCancel }) => {
     const [companyID, setCompanyID] = useState<number | undefined>(experience.companyID)
@@ -18,6 +20,8 @@ const ExperienceEditor: React.FC<ExperienceEditorProps> = ({ experience, onUpdat
     const [endDate, setEndDate] = useState<Date | null>(experience.endDate)
     const [qualificationName, setQualificationName] = useState<string | undefined>(experience.qualificationName)
     const [qualificationDescription, setQualificationDescription] = useState<string | undefined>(experience.qualificationDescription)
+
+    const [companiesList, setCompaniesList] = useState<Company[]>([])
 
     const handleSave = () => {
         onUpdate({
@@ -31,6 +35,21 @@ const ExperienceEditor: React.FC<ExperienceEditorProps> = ({ experience, onUpdat
         })
     }
 
+    const fetchCompanies = async () => {
+        try {
+            const response = await axios.post(`${apiUrl}/api/shared/companies`, {})
+            const data = await response.data
+            setCompaniesList(data)
+        }
+        catch (error) {
+            console.error(error)
+        }
+    }
+
+    useEffect(() => {
+        fetchCompanies()
+    }, [])
+
     return (
         <Fieldset legend="Редактировать" style={{ marginBottom: '1rem' }} className="h-auto flex flex-col w-fit">
             <div className="ml-2">
@@ -42,11 +61,11 @@ const ExperienceEditor: React.FC<ExperienceEditorProps> = ({ experience, onUpdat
                         onChange={(e) => {
                             const selectedCompanyID = Number(e.target.value)
                             setCompanyID(selectedCompanyID)
-                            const selectedCompany = testCompanies.find(c => c.ID === selectedCompanyID)
+                            const selectedCompany = companiesList.find(c => c.ID === selectedCompanyID)
                             setCompanyName(selectedCompany ? selectedCompany.name : undefined)
                         }}
                     >
-                        {testCompanies.map((company) => (
+                        {companiesList.map((company) => (
                             <option key={company.ID} value={company.ID}>
                                 {company.name}
                             </option>
