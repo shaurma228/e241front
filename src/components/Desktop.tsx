@@ -14,7 +14,7 @@ function Desktop(props: WindowSizeProviderProps) {
     const handleOpenVacancyList = props.openVacancyList
     const handleOpenMyResume = props.openMyResume
 
-    const [activeIcon, setActiveIcon] = useState<number | null>(null);
+    const [activeIcon, setActiveIcon] = useState<number | null>(null)
 
     const handleToggleIcon = (iconId: number) => {
         setActiveIcon((prev: number | null) => (prev === iconId ? null : iconId))
