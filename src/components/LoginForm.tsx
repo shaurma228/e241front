@@ -38,7 +38,7 @@ function LoginForm() {
                             value={login}
                             onChange={(e) => setLogin(e.target.value)}
                             required
-                        ></Input>
+                        />
                     </div>
                     <div className="flex items-center justify-center mb-2">
                         <div className="w-[60px]">Пароль</div>
@@ -48,7 +48,7 @@ function LoginForm() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                        ></Input>
+                        />
                     </div>
                     <div className="ml-2 mb-2">
                         <Checkbox onClick={() => setShowPassword((v) => !v)}>Показать пароль</Checkbox>

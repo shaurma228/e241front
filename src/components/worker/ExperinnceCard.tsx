@@ -10,6 +10,7 @@ interface ExperinnceCardProps extends Experience {
 
 function ExperinnceCard(props: ExperinnceCardProps) {
     const [experience, setExperience] = useState(props)
+
     const [isEditing, setIsEditing] = useState<boolean>(false)
 
     const handleUpdate = (updatedExperience: Experience) => {

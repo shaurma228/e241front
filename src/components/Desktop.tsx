@@ -1,9 +1,7 @@
 'use client'
 
 import React, { useState } from "react"
-import {
-    Wab321018,
-} from "@react95/icons"
+import { Wab321018 } from "@react95/icons"
 
 interface WindowSizeProviderProps {
     openVacancyList: () => void

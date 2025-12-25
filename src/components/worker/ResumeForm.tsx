@@ -14,7 +14,6 @@ function ResumeForm() {
     const [name, setName] = useState<string>("")
     const [description, setDescription] = useState<string>("")
     const [photo, setPhoto] = useState<string>("")
-
     const [toAddExperience, setToAddExperience] = useState<Experience>({
         companyID: undefined,
         companyName: "",
@@ -23,7 +22,6 @@ function ResumeForm() {
         qualificationName: "",
         qualificationDescription: "",
     })
-
     const [isAddingExperience, setIsAddingExperience] = useState<boolean>(false)
 
     const fetchResumeData = async () => {

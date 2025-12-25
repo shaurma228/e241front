@@ -1,10 +1,7 @@
 import React from "react"
 
 import { TaskBar, List } from "@react95/core"
-import {
-    Computer3,
-    MsDos
-} from "@react95/icons"
+import { Computer3, MsDos } from "@react95/icons"
 
 function TaskBarComponent() {
     return (

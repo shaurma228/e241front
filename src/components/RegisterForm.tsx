@@ -43,7 +43,7 @@ function RegisterForm() {
                             value={login}
                             onChange={(e) => setLogin(e.target.value)}
                             required
-                        ></Input>
+                        />
                     </div>
                     <div className="flex items-center justify-center mb-2">
                         <div className="w-[80px]">Пароль</div>
@@ -53,7 +53,7 @@ function RegisterForm() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                        ></Input>
+                        />
                     </div>
                     <div className="flex items-center justify-center mb-2">
                         <div className="w-[80px]">Подтвердить пароль</div>
@@ -63,14 +63,14 @@ function RegisterForm() {
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
-                        ></Input>
+                        />
                     </div>
                     <div className="ml-2 mb-2">
                         <Checkbox onClick={() => setShowPassword((v) => !v)}>Показать пароль</Checkbox>
                     </div>
                 </Fieldset>
                 <div className="w-full flex justify-end">
-                    <Button className="mt-2 w-[150px]" type="submit">Зарегестрироваться</Button>
+                    <Button className="mt-2 w-[150px]" type="submit">Зарегистрироваться</Button>
                 </div>
             </div>
         </form>

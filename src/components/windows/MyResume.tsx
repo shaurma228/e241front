@@ -1,12 +1,13 @@
 import React from "react"
-import { Modal, TitleBar} from "@react95/core"
-import { Wab321018 }  from "@react95/icons" //надо обновить иконку
+import { Modal, TitleBar } from "@react95/core"
+import { Wab321018 }  from "@react95/icons" //TODO: обновить иконку
 import type { Window } from '@/types/props.ts'
 import ResumeForm from "@/components/worker/ResumeForm"
 
 function MyResume(props: Window) {
     const showMyResume = props.show
     const toggleShowMyResume = props.toggle
+
     const screenW = 100
     const screenH = -30
 

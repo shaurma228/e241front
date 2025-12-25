@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Modal, TitleBar } from "@react95/core"
-import { Wab321018 }  from "@react95/icons" //надо обновить иконку
+import { Wab321018 }  from "@react95/icons" //TODO: обновить иконку
 import type { Window, Vacancy } from '@/types/props.ts'
 import VacancyCard from "@/components/VacancyCard"
 import axios from "axios"
@@ -8,6 +8,7 @@ import axios from "axios"
 function VacancyList(props: Window) {
     const showVacancyList = props.show
     const toggleShowVacancyList = props.toggle
+
     const screenW = 100
     const screenH = -30
     const [vacancies, setVacancies] = useState<Vacancy[]>([])
