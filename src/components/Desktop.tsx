@@ -32,8 +32,8 @@ function Desktop(props: WindowSizeProviderProps) {
                 <p className="text-white select-none">Вакансии</p>
             </div>
             <div
-                className={`w-[80px] h-[80px] flex flex-col items-center justify-center ${activeIcon === 1 ? "border-[2px] border-white border-dotted bg-[rgba(160,140,55,0.6)]" : ""}`}
-                onClick={() => handleToggleIcon(1)}
+                className={`w-[80px] h-[80px] flex flex-col items-center justify-center ${activeIcon === 2 ? "border-[2px] border-white border-dotted bg-[rgba(160,140,55,0.6)]" : ""}`}
+                onClick={() => handleToggleIcon(2)}
                 onDoubleClick={() => handleOpenMyResume()}
             >
                 <Wab321018 variant="32x32_4"/>
