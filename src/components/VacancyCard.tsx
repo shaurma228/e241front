@@ -15,7 +15,11 @@ function VacancyCard(props: Vacancy) {
 
     const apply= async () => {
         try {
-            await axios.post(`${apiUrl}/api/vacancy/${vacancyID}/apply`, {})
+            await axios.post(`${apiUrl}/api/vacancy/${vacancyID}/apply`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            })
         }
         catch (error) {
             console.log(error)

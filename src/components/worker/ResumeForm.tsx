@@ -28,7 +28,11 @@ function ResumeForm() {
 
     const fetchResumeData = async () => {
         try {
-            const response = await axios.post(`${apiUrl}/api/worker/account`, {})
+            const response = await axios.post(`${apiUrl}/api/worker/account`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            })
             const data = response.data
             setName(data.Name)
             setDescription(data.Description)
@@ -42,7 +46,11 @@ function ResumeForm() {
 
     const fetchHistory = async () => {
         try {
-            const response = await axios.post(`${apiUrl}/api/history`, {})
+            const response = await axios.post(`${apiUrl}/api/history`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            })
             const data = response.data
             setExperiences(data)
         }
@@ -57,7 +65,16 @@ function ResumeForm() {
         setExperiences([...experiences, newExperience])
         setIsAddingExperience(false)
         try {
-            await axios.post(`${apiUrl}/api/add-history`, experiences)
+            await axios.post(`${apiUrl}/api/add-history`,
+                {
+                    experiences
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                }
+            )
             fetchHistory()
         }
         catch (error) {
@@ -70,7 +87,16 @@ function ResumeForm() {
         const updatedExperiences = experiences.filter(exp => exp.ID !== id)
         setExperiences(updatedExperiences)
         try {
-            axios.post(`${apiUrl}/api/update-history`, { experiences })
+            axios.post(`${apiUrl}/api/update-history`,
+                {
+                    experiences
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                }
+            )
             fetchHistory()
         }
         catch (error) {
@@ -84,7 +110,16 @@ function ResumeForm() {
         )
         setExperiences(updatedExperiences)
         try {
-            axios.post(`${apiUrl}/api/update-history`, { experiences })
+            axios.post(`${apiUrl}/api/update-history`,
+                {
+                    experiences
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                }
+            )
             fetchHistory()
         }
         catch (error) {

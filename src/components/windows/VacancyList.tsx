@@ -18,7 +18,11 @@ function VacancyList(props: Window) {
 
     const fetchVacancies = async () => {
          try {
-             const response = await axios.get('/api/vacancy')
+             const response = await axios.get('/api/vacancy', {
+                 headers: {
+                     Authorization: `Bearer ${localStorage.getItem('token')}`,
+                 },
+             })
              setVacancies(response.data)
          }
          catch (error) {
