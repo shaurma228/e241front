@@ -92,6 +92,25 @@ function ResumeForm() {
         }
     }
 
+    const handleSaveResume = () => {
+        try {
+            axios.post(`${apiUrl}/api/worker/fill`,
+                {
+                    name: name,
+                    description: description,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                }
+            )
+        }
+        catch (error) {
+            console.error(error)
+        }
+    }
+
     useEffect(() => {
         fetchResumeData()
         fetchHistory()
@@ -118,7 +137,11 @@ function ResumeForm() {
                 </div>
             </div>
             <div className="mb-4 ml-2">
-                <Button>сохранить</Button>
+                <Button
+                    onClick={handleSaveResume}
+                >
+                    сохранить
+                </Button>
             </div>
             <div>
                 <div>Список опыта работы:</div>

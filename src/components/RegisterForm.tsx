@@ -23,8 +23,8 @@ function RegisterForm() {
         try {
             const response = await axios.post(`${apiUrl}/api/auth/register`, { login, password })
             const { token, refreshToken } = response.data
-            // localStorage.setItem('token', token)
-            // localStorage.setItem('refreshToken', refreshToken)
+            localStorage.setItem('token', token)
+            localStorage.setItem('refreshToken', refreshToken)
             console.log('Registration successful')
             router.push('/')
         } catch (error) {
