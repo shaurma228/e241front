@@ -129,8 +129,8 @@ function ResumeForm() {
         try {
             axios.post(`${apiUrl}/api/worker/fill`,
                 {
-                    name: name,
-                    description: description,
+                    name,
+                    description,
                 },
                 {
                     headers: {
